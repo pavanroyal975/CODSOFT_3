@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <link rel="stylesheet" href="calculator.css">
+    <script src="cal.js"></script>
+</head>
+<body>
+    <section class="page">
+        <div class="cont">
+         <div class="screen">
+              <div class="display">
+              <h1 class="text" id="text">0</h1>
+              </div>
+         </div>
+         <div class="keypad">
+             <div class="key AC" onclick="AC(this)">AC</div>
+             <div class="key op" onclick="key(this)">(</div>
+             <div class="key op" onclick="op(this)">)</div>
+             <div class="key op" onclick="op(this)">/</div>
+             <div class="key" onclick="key(this)">1</div>
+             <div class="key" onclick="key(this)">2</div>
+             <div class="key" onclick="key(this)">3</div>
+             <div class="key op" onclick="op(this)">*</div>
+             <div class="key" onclick="key(this)">4</div>
+             <div class="key" onclick="key(this)">5</div>
+             <div class="key" onclick="key(this)">6</div>
+             <div class="key op" onclick="op(this)">-</div>
+             <div class="key" onclick="key(this)">7</div>
+             <div class="key" onclick="key(this)">8</div>
+             <div class="key" onclick="key(this)">9</div>
+             <div class="key op" onclick="op(this)">+</div>
+             <div class="key" onclick="key(this)">.</div>
+             <div class="key" onclick="key(this)">0</div>
+             <div class="key clear" onclick="clr(this)">CLR</div>
+             <div class="key sol" onclick="result(this)">=</div>
+            </div>
+        </div>
+    </section>
+  <script>
+    var dis = document.getElementById("text");
+
+    function key(e){
+        if(dis.innerHTML == "ERROR" || dis.innerHTML == '0'){
+            dis.innerHTML =e.innerHTML;
+        }
+        else{
+        dis.innerHTML +=e.innerHTML;
+    }
+     }
+    function op(e){ 
+       let s=dis.innerHTML;
+       let c=s[s.length-1];
+
+       if(c=='+' || c=='-' || c=='/' || c=='*'){
+        clr(e);
+       }s
+        key(e);
+    }
+    function result(e){
+        let ans=eval(dis.innerHTML)
+        if (ans == dis.innerHTML){
+            dis.innerHTML="ERROR";
+        }
+        else{
+            dis.innerHTML=ans;
+        }
+    }
+    function AC(e){
+        dis.innerHTML="0";
+
+    }
+    function clr(e){
+
+        if(dis.innerHTML == "ERROR" || dis.innerHTML.length == 1){
+            dis.innerHTML = "0";
+        }
+        else{
+        dis.innerHTML=dis.innerHTML.substring(0,dis.innerHTML.length-1);
+        }
+    }
+  </script>
+</body>
+</html>
